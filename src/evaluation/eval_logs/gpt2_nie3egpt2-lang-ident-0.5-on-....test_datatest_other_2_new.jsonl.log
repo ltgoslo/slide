@@ -1,0 +1,56 @@
+INFO:root:Evaluation of gpt2 started
+INFO:root:Loading dataset from ../../test_data/test_other_2_new.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='gpt2', dataset='../../test_data/test_other_2_new.jsonl', model='nie3e/gpt2-lang-ident', threshold=0.5, run_name='gpt2_nie3egpt2-lang-ident-0.5-on-....test_datatest_other_2_new.jsonl', log_fn='eval_logs/gpt2_nie3egpt2-lang-ident-0.5-on-....test_datatest_other_2_new.jsonl')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for gpt2:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 61.15%
+INFO:root:	Loose macro F1: 56.14%
+INFO:root:	Loose macro MCC: 57.49%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 48.13%
+INFO:root:		MCC: 47.94%
+INFO:root:	nn:
+INFO:root:		F1: 25.34%
+INFO:root:		MCC: 34.11%
+INFO:root:	da:
+INFO:root:		F1: 37.26%
+INFO:root:		MCC: 41.09%
+INFO:root:	sv:
+INFO:root:		F1: 83.75%
+INFO:root:		MCC: 81.45%
+INFO:root:	other:
+INFO:root:		F1: 86.22%
+INFO:root:		MCC: 82.88%
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 58.92%
+INFO:root:	Overlap F1: 60.28%
+INFO:root:	Strict macro F1: 55.53%
+INFO:root:	Strict macro MCC: 51.98%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 47.01%
+INFO:root:		MCC: 34.10%
+INFO:root:	nn:
+INFO:root:		F1: 23.98%
+INFO:root:		MCC: 31.90%
+INFO:root:	da:
+INFO:root:		F1: 36.85%
+INFO:root:		MCC: 32.18%
+INFO:root:	sv:
+INFO:root:		F1: 83.57%
+INFO:root:		MCC: 80.24%
+INFO:root:	other:
+INFO:root:		F1: 86.22%
+INFO:root:		MCC: 81.47%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 364.30 seconds
+INFO:root:	ms / sentence: 52.42 ms

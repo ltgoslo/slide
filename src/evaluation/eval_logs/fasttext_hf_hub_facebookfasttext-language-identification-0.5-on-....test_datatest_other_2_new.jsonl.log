@@ -1,0 +1,56 @@
+INFO:root:Evaluation of fasttext_hf_hub started
+INFO:root:Loading dataset from ../../test_data/test_other_2_new.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='fasttext_hf_hub', dataset='../../test_data/test_other_2_new.jsonl', model='facebook/fasttext-language-identification', threshold=0.5, run_name='fasttext_hf_hub_facebookfasttext-language-identification-0.5-on-....test_datatest_other_2_new.jsonl', log_fn='eval_logs/fasttext_hf_hub_facebookfasttext-language-identification-0.5-on-....test_datatest_other_2_new.jsonl')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for fasttext_hf_hub:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 95.31%
+INFO:root:	Loose macro F1: 94.01%
+INFO:root:	Loose macro MCC: 92.84%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 95.05%
+INFO:root:		MCC: 93.25%
+INFO:root:	nn:
+INFO:root:		F1: 94.15%
+INFO:root:		MCC: 92.85%
+INFO:root:	da:
+INFO:root:		F1: 89.90%
+INFO:root:		MCC: 89.46%
+INFO:root:	sv:
+INFO:root:		F1: 97.30%
+INFO:root:		MCC: 96.77%
+INFO:root:	other:
+INFO:root:		F1: 93.63%
+INFO:root:		MCC: 91.88%
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 91.58%
+INFO:root:	Overlap F1: 93.92%
+INFO:root:	Strict macro F1: 91.67%
+INFO:root:	Strict macro MCC: 89.75%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 93.00%
+INFO:root:		MCC: 90.16%
+INFO:root:	nn:
+INFO:root:		F1: 89.03%
+INFO:root:		MCC: 86.45%
+INFO:root:	da:
+INFO:root:		F1: 85.85%
+INFO:root:		MCC: 84.44%
+INFO:root:	sv:
+INFO:root:		F1: 96.84%
+INFO:root:		MCC: 96.14%
+INFO:root:	other:
+INFO:root:		F1: 93.63%
+INFO:root:		MCC: 91.56%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 1.00 seconds
+INFO:root:	ms / sentence: 0.14 ms

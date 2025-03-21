@@ -1,0 +1,56 @@
+INFO:root:Evaluation of fasttext_hf_hub started
+INFO:root:Loading dataset from ../../test_data/test_other_2_new.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='fasttext_hf_hub', dataset='../../test_data/test_other_2_new.jsonl', model='NbAiLab/nb-nordic-lid', threshold=0.5, run_name='fasttext_hf_hub_NbAiLabnb-nordic-lid-0.5-on-....test_datatest_other_2_new.jsonl', log_fn='eval_logs/fasttext_hf_hub_NbAiLabnb-nordic-lid-0.5-on-....test_datatest_other_2_new.jsonl')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for fasttext_hf_hub:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 83.28%
+INFO:root:	Loose macro F1: 80.55%
+INFO:root:	Loose macro MCC: 78.67%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 87.23%
+INFO:root:		MCC: 83.63%
+INFO:root:	nn:
+INFO:root:		F1: 86.94%
+INFO:root:		MCC: 84.50%
+INFO:root:	da:
+INFO:root:		F1: 68.49%
+INFO:root:		MCC: 69.30%
+INFO:root:	sv:
+INFO:root:		F1: 89.82%
+INFO:root:		MCC: 88.18%
+INFO:root:	other:
+INFO:root:		F1: 70.26%
+INFO:root:		MCC: 67.73%
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 80.62%
+INFO:root:	Overlap F1: 82.32%
+INFO:root:	Strict macro F1: 79.34%
+INFO:root:	Strict macro MCC: 74.90%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 84.99%
+INFO:root:		MCC: 79.26%
+INFO:root:	nn:
+INFO:root:		F1: 84.82%
+INFO:root:		MCC: 80.58%
+INFO:root:	da:
+INFO:root:		F1: 66.96%
+INFO:root:		MCC: 63.78%
+INFO:root:	sv:
+INFO:root:		F1: 89.68%
+INFO:root:		MCC: 87.44%
+INFO:root:	other:
+INFO:root:		F1: 70.26%
+INFO:root:		MCC: 63.44%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 0.25 seconds
+INFO:root:	ms / sentence: 0.04 ms
