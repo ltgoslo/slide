@@ -6,7 +6,7 @@ Data and code (still being added) for the paper Multi-label Scandinavian Languag
 
 ##### [Models on HuggingFace](https://huggingface.co/collections/ltg/slide-67d4538eac9736a6f068bf2a) and [how to use them](src/usage_example.py)
 
-##### reproduce baselines:
+##### reproduce metrics:
 
 ```commandline
 cd src/evaluation/

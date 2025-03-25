@@ -18,6 +18,7 @@ from identifiers import (
     FasttextHfHubIdentifier,
     FasttextLanguageIdentifier,
     OpenlidLanguageIdentifier,
+    BERTIdentifier,
 )
 
 OUT_DIR = 'eval_logs/'
@@ -272,6 +273,8 @@ def main():
         identifier = FasttextLanguageIdentifier(args)
     elif args.method == "openlid":
         identifier = OpenlidLanguageIdentifier(args)
+    elif args.method == "bert":
+        identifier = BERTIdentifier(args)
     evaluate(args, identifier)
 
 
