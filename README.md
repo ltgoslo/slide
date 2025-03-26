@@ -9,6 +9,6 @@ Data and code (still being added) for the paper Multi-label Scandinavian Languag
 ##### reproduce metrics:
 
 ```commandline
-cd src/evaluation/
+cd src/
 ./run_all.sh
 ```

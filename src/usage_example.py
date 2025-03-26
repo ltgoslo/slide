@@ -4,7 +4,7 @@ import torch
 from torch.cuda import is_available
 from transformers import AutoModelForSequenceClassification
 
-from custom_tokenizer import CustomTokenizer
+from identifiers.custom_tokenizer import CustomTokenizer
 
 SIGMOID_THRESHOLD = 0.5
 

@@ -1,4 +1,4 @@
-import re
+import regex as re
 
 from transformers import AutoTokenizer
 
@@ -36,6 +36,7 @@ class CustomTokenizer:
             sample = self.number_pattern.sub(self.replacement_symbols["num"], sample)
             sample = self.url_pattern.sub(self.replacement_symbols["url"], sample)
             sample = self.mail_pattern.sub(self.replacement_symbols["mail"], sample)
+            sample = sample.lower()
             new.append(sample)
         return new
 
@@ -44,5 +45,7 @@ class CustomTokenizer:
         return getattr(self.tokenizer, attr)
 
     def __call__(self, text, **kwargs):
+        if isinstance(text, str):
+            text = [text]
         preprocessed_text = self.preprocess(text)
         return self.tokenizer(preprocessed_text, **kwargs)

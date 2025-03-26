@@ -25,6 +25,7 @@ OUT_DIR = 'eval_logs/'
 GOLD_LANGUAGES = 'gold_languages'
 PREDICTED_LANGUAGES = 'predicted_languages'
 
+
 def parse_args():
     import argparse
     parser = argparse.ArgumentParser()
@@ -37,7 +38,7 @@ def parse_args():
     parser.add_argument(
         "--dataset",
         type=str,
-        default="../../test_data/test_other_2_new.jsonl",
+        default="../test_data/test_other_2_new.jsonl",
         help="The dataset to use for evaluation",
     )
     parser.add_argument(
