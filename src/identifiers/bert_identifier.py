@@ -54,7 +54,8 @@ class BERTIdentifier(AbstractLanguageIdentifier):
             self.device)
 
         # multilabel
-        sigmoids = torch.sigmoid(self.model(**input_ids)["logits"])
+        logits = self.model(**input_ids)["logits"]
+        sigmoids = torch.sigmoid(logits)
         # if other > 0.80, output only "other"
         if sigmoids[0][3] > 0.50:
             preds = torch.zeros(5).int()
@@ -62,12 +63,13 @@ class BERTIdentifier(AbstractLanguageIdentifier):
         else:
             preds = (sigmoids > self.args.threshold).int()
 
-        ids = [torch.where(row == 1)[0].tolist() for row in preds][0]
+        ids = preds.squeeze().nonzero().squeeze(0)
+        if len(ids.shape) > 1:
+            ids = ids.squeeze(1)
         # if no pred over threshold, output argmax
-        if len(ids) == 0:
-            preds = [self.mapping[
-                         self.model(**input_ids)["logits"].argmax().item()]]
+        if ids.nelement() == 0:
+            preds = [self.mapping[sigmoids.argmax().item()]]
         else:
-            preds = [self.mapping[i] for i in ids]
+            preds = [self.mapping[i.item()] for i in ids]
 
         return preds
