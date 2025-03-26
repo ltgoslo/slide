@@ -1,0 +1,56 @@
+INFO:root:Evaluation of fasttext started
+INFO:root:Loading dataset from ../../test_data/test_other_2_new.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='fasttext', dataset='../../test_data/test_other_2_new.jsonl', model='FastText-176', threshold=0.5, run_name='fasttext_FastText-176-0.5-on-....test_datatest_other_2_new.jsonl', log_fn='eval_logs/fasttext_FastText-176-0.5-on-....test_datatest_other_2_new.jsonl')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for fasttext:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 80.50%
+INFO:root:	Loose macro F1: 77.42%
+INFO:root:	Loose macro MCC: 76.01%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 73.67%
+INFO:root:		MCC: 68.00%
+INFO:root:	nn:
+INFO:root:		F1: 59.22%
+INFO:root:		MCC: 60.06%
+INFO:root:	da:
+INFO:root:		F1: 67.64%
+INFO:root:		MCC: 68.55%
+INFO:root:	sv:
+INFO:root:		F1: 93.05%
+INFO:root:		MCC: 91.82%
+INFO:root:	other:
+INFO:root:		F1: 93.53%
+INFO:root:		MCC: 91.63%
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 77.67%
+INFO:root:	Overlap F1: 79.44%
+INFO:root:	Strict macro F1: 76.10%
+INFO:root:	Strict macro MCC: 72.26%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 72.58%
+INFO:root:		MCC: 60.47%
+INFO:root:	nn:
+INFO:root:		F1: 55.69%
+INFO:root:		MCC: 55.68%
+INFO:root:	da:
+INFO:root:		F1: 65.97%
+INFO:root:		MCC: 62.71%
+INFO:root:	sv:
+INFO:root:		F1: 92.72%
+INFO:root:		MCC: 91.12%
+INFO:root:	other:
+INFO:root:		F1: 93.53%
+INFO:root:		MCC: 91.34%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 0.14 seconds
+INFO:root:	ms / sentence: 0.02 ms

@@ -1,0 +1,56 @@
+INFO:root:Evaluation of random started
+INFO:root:Loading dataset from ../../test_data/test_other_2_new.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='random', dataset='../../test_data/test_other_2_new.jsonl', model='cis-lmu/glotlid', threshold=0.5, run_name='random_cis-lmuglotlid-0.5-on-....test_datatest_other_2_new.jsonl', log_fn='eval_logs/random_cis-lmuglotlid-0.5-on-....test_datatest_other_2_new.jsonl')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for random:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 21.41%
+INFO:root:	Loose macro F1: 20.36%
+INFO:root:	Loose macro MCC: 27.13%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 24.90%
+INFO:root:		MCC: 29.35%
+INFO:root:	nn:
+INFO:root:		F1: 21.73%
+INFO:root:		MCC: 28.19%
+INFO:root:	da:
+INFO:root:		F1: 13.07%
+INFO:root:		MCC: 22.78%
+INFO:root:	sv:
+INFO:root:		F1: 18.98%
+INFO:root:		MCC: 26.69%
+INFO:root:	other:
+INFO:root:		F1: 23.11%
+INFO:root:		MCC: 28.67%
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 19.37%
+INFO:root:	Overlap F1: 20.57%
+INFO:root:	Strict macro F1: 20.06%
+INFO:root:	Strict macro MCC: 0.11%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 24.38%
+INFO:root:		MCC: 0.81%
+INFO:root:	nn:
+INFO:root:		F1: 21.21%
+INFO:root:		MCC: -0.15%
+INFO:root:	da:
+INFO:root:		F1: 12.72%
+INFO:root:		MCC: -0.44%
+INFO:root:	sv:
+INFO:root:		F1: 18.86%
+INFO:root:		MCC: -0.28%
+INFO:root:	other:
+INFO:root:		F1: 23.11%
+INFO:root:		MCC: 0.63%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 0.01 seconds
+INFO:root:	ms / sentence: 0.00 ms
