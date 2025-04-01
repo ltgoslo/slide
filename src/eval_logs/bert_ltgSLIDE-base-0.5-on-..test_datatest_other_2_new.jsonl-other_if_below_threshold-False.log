@@ -1,0 +1,56 @@
+INFO:root:Evaluation of bert started
+INFO:root:Loading dataset from ../test_data/test_other_2_new.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='bert', dataset='../test_data/test_other_2_new.jsonl', model='ltg/SLIDE-base', threshold=0.5, other_if_below_threshold=False, run_name='bert_ltgSLIDE-base-0.5-on-..test_datatest_other_2_new.jsonl-other_if_below_threshold-False', log_fn='eval_logs/bert_ltgSLIDE-base-0.5-on-..test_datatest_other_2_new.jsonl-other_if_below_threshold-False', custom_tokenizer=True)
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for bert:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 98.56%
+INFO:root:	Loose macro F1: 98.08%
+INFO:root:	Loose macro MCC: 97.63%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 97.89%
+INFO:root:		MCC: 97.01%
+INFO:root:	nn:
+INFO:root:		F1: 97.89%
+INFO:root:		MCC: 97.27%
+INFO:root:	da:
+INFO:root:		F1: 96.05%
+INFO:root:		MCC: 95.71%
+INFO:root:	sv:
+INFO:root:		F1: 99.19%
+INFO:root:		MCC: 99.02%
+INFO:root:	other:
+INFO:root:		F1: 99.37%
+INFO:root:		MCC: 99.16%
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 96.40%
+INFO:root:	Overlap F1: 98.52%
+INFO:root:	Strict macro F1: 97.03%
+INFO:root:	Strict macro MCC: 96.44%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 98.08%
+INFO:root:		MCC: 97.26%
+INFO:root:	nn:
+INFO:root:		F1: 97.10%
+INFO:root:		MCC: 96.22%
+INFO:root:	da:
+INFO:root:		F1: 91.99%
+INFO:root:		MCC: 91.22%
+INFO:root:	sv:
+INFO:root:		F1: 98.63%
+INFO:root:		MCC: 98.34%
+INFO:root:	other:
+INFO:root:		F1: 99.37%
+INFO:root:		MCC: 99.16%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 86.31 seconds
+INFO:root:	ms / sentence: 12.42 ms

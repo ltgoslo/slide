@@ -1,56 +1,56 @@
 INFO:root:Evaluation of bert started
 INFO:root:Loading dataset from ../test_data/test_other_2_new.jsonl...
 INFO:root:Running inference...
-INFO:root:Namespace(method='bert', dataset='../test_data/test_other_2_new.jsonl', model='ltg/SLIDE-small', threshold=0.5, run_name='bert_ltgSLIDE-small-0.5-on-..test_datatest_other_2_new.jsonl', log_fn='eval_logs/bert_ltgSLIDE-small-0.5-on-..test_datatest_other_2_new.jsonl', custom_tokenizer=True)
+INFO:root:Namespace(method='bert', dataset='../test_data/test_other_2_new.jsonl', model='ltg/SLIDE-small', threshold=0.5, other_if_below_threshold=False, run_name='bert_ltgSLIDE-small-0.5-on-..test_datatest_other_2_new.jsonl', log_fn='eval_logs/bert_ltgSLIDE-small-0.5-on-..test_datatest_other_2_new.jsonl', custom_tokenizer=True)
 INFO:root:Calculating metrics...
 INFO:root:
 # Results for bert:
 
 INFO:root:## Loose metrics
-INFO:root:	Loose accuracy: 98.16%
-INFO:root:	Loose macro F1: 97.44%
-INFO:root:	Loose macro MCC: 96.85%
+INFO:root:	Loose accuracy: 98.14%
+INFO:root:	Loose macro F1: 97.37%
+INFO:root:	Loose macro MCC: 96.77%
 INFO:root:### Per-language metrics
 INFO:root:	nb:
 INFO:root:		F1: 97.42%
 INFO:root:		MCC: 96.34%
 INFO:root:	nn:
-INFO:root:		F1: 97.10%
-INFO:root:		MCC: 96.25%
+INFO:root:		F1: 97.04%
+INFO:root:		MCC: 96.17%
 INFO:root:	da:
-INFO:root:		F1: 94.97%
-INFO:root:		MCC: 94.55%
+INFO:root:		F1: 94.73%
+INFO:root:		MCC: 94.29%
 INFO:root:	sv:
-INFO:root:		F1: 98.54%
-INFO:root:		MCC: 98.24%
+INFO:root:		F1: 98.58%
+INFO:root:		MCC: 98.29%
 INFO:root:	other:
-INFO:root:		F1: 99.14%
-INFO:root:		MCC: 98.86%
+INFO:root:		F1: 99.08%
+INFO:root:		MCC: 98.78%
 INFO:root:
 
 ## Strict metrics
-INFO:root:	Strict accuracy: 95.71%
+INFO:root:	Strict accuracy: 95.73%
 INFO:root:	Overlap F1: 98.03%
-INFO:root:	Strict macro F1: 96.22%
-INFO:root:	Strict macro MCC: 95.48%
+INFO:root:	Strict macro F1: 96.20%
+INFO:root:	Strict macro MCC: 95.46%
 INFO:root:### Per-language metrics
 INFO:root:	nb:
 INFO:root:		F1: 97.69%
 INFO:root:		MCC: 96.71%
 INFO:root:	nn:
-INFO:root:		F1: 96.31%
+INFO:root:		F1: 96.30%
 INFO:root:		MCC: 95.18%
 INFO:root:	da:
-INFO:root:		F1: 89.98%
-INFO:root:		MCC: 89.10%
+INFO:root:		F1: 89.89%
+INFO:root:		MCC: 89.01%
 INFO:root:	sv:
-INFO:root:		F1: 97.99%
-INFO:root:		MCC: 97.55%
+INFO:root:		F1: 98.03%
+INFO:root:		MCC: 97.60%
 INFO:root:	other:
-INFO:root:		F1: 99.14%
-INFO:root:		MCC: 98.85%
+INFO:root:		F1: 99.08%
+INFO:root:		MCC: 98.77%
 INFO:root:
 
 ## CPU inference time
-INFO:root:	Total runtime: 183.98 seconds
-INFO:root:	ms / sentence: 26.47 ms
+INFO:root:	Total runtime: 66.34 seconds
+INFO:root:	ms / sentence: 9.55 ms

@@ -13,7 +13,7 @@ class BERTIdentifier(AbstractLanguageIdentifier):
         tokenizer_path = args.model
         model_path = args.model
         self.mapping = {0: "da", 1: "nb", 2: "nn", 3: "other", 4: "sv"}
-
+        self.other_if_below_threshold = args.other_if_below_threshold
         # set random seed
         torch.manual_seed(42)
 
@@ -66,9 +66,12 @@ class BERTIdentifier(AbstractLanguageIdentifier):
         ids = preds.squeeze().nonzero().squeeze(0)
         if len(ids.shape) > 1:
             ids = ids.squeeze(1)
-        # if no pred over threshold, output argmax
+        # if no pred over threshold, output argmax or other
         if ids.nelement() == 0:
-            preds = [self.mapping[sigmoids.argmax().item()]]
+            if self.other_if_below_threshold:
+                preds = [self.mapping[sigmoids.argmax().item()]]
+            else:
+                preds = ["other"]
         else:
             preds = [self.mapping[i.item()] for i in ids]
 

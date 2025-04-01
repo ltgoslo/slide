@@ -1,0 +1,56 @@
+INFO:root:Evaluation of bert started
+INFO:root:Loading dataset from /home/laks/PycharmProjects/scandinavian-language-identification/nordic_langid_data/nordic_dsl_test50k.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='bert', dataset='/home/laks/PycharmProjects/scandinavian-language-identification/nordic_langid_data/nordic_dsl_test50k.jsonl', model='ltg/SLIDE-base', threshold=0.5, other_if_below_threshold=True, run_name='bert_ltgSLIDE-base-0.5-on-homelaksPycharmProjectsscandinavian-language-identificationnordic_langid_datanordic_dsl_test50k.jsonl-other_if_below_threshold-True', log_fn='eval_logs/bert_ltgSLIDE-base-0.5-on-homelaksPycharmProjectsscandinavian-language-identificationnordic_langid_datanordic_dsl_test50k.jsonl-other_if_below_threshold-True', custom_tokenizer=True)
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for bert:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 93.70%
+INFO:root:	Loose macro F1: 92.79%
+INFO:root:	Loose macro MCC: 91.24%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 91.51%
+INFO:root:		MCC: 89.92%
+INFO:root:	nn:
+INFO:root:		F1: 91.42%
+INFO:root:		MCC: 89.87%
+INFO:root:	da:
+INFO:root:		F1: 92.34%
+INFO:root:		MCC: 91.04%
+INFO:root:	sv:
+INFO:root:		F1: 93.92%
+INFO:root:		MCC: 92.97%
+INFO:root:	other:
+INFO:root:		F1: 94.74%
+INFO:root:		MCC: 92.40%
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 93.70%
+INFO:root:	Overlap F1: 94.56%
+INFO:root:	Strict macro F1: 93.69%
+INFO:root:	Strict macro MCC: 92.17%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 93.24%
+INFO:root:		MCC: 91.95%
+INFO:root:	nn:
+INFO:root:		F1: 92.45%
+INFO:root:		MCC: 91.05%
+INFO:root:	da:
+INFO:root:		F1: 93.98%
+INFO:root:		MCC: 92.85%
+INFO:root:	sv:
+INFO:root:		F1: 94.03%
+INFO:root:		MCC: 92.90%
+INFO:root:	other:
+INFO:root:		F1: 94.74%
+INFO:root:		MCC: 92.11%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 178.21 seconds
+INFO:root:	ms / sentence: 11.91 ms

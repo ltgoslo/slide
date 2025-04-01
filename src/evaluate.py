@@ -42,10 +42,11 @@ def parse_args():
         help="The dataset to use for evaluation",
     )
     parser.add_argument(
-        '--model',
+        "--model",
                         default="cis-lmu/glotlid",
     )
-    parser.add_argument('--threshold', type=float, default=0.5)
+    parser.add_argument("--threshold", type=float, default=0.5)
+    parser.add_argument("--other_if_below_threshold", action="store_true")
     return parser.parse_args()
 
 
@@ -256,6 +257,9 @@ def main():
     args.run_name = f"{args.method}_{args.model}-{args.threshold}-on-{args.dataset}".replace(
         '/', ''
     )
+    is_bert = args.method == "bert"
+    if is_bert:
+        args.run_name += f"-other_if_below_threshold-{args.other_if_below_threshold}"
     args.log_fn = os.path.join(OUT_DIR, args.run_name)
     print(args.log_fn)
     logging.basicConfig(
@@ -274,7 +278,7 @@ def main():
         identifier = FasttextLanguageIdentifier(args)
     elif args.method == "openlid":
         identifier = OpenlidLanguageIdentifier(args)
-    elif args.method == "bert":
+    elif is_bert:
         identifier = BERTIdentifier(args)
     evaluate(args, identifier)
 

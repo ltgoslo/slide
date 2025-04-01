@@ -1,0 +1,56 @@
+INFO:root:Evaluation of fasttext_hf_hub started
+INFO:root:Loading dataset from /home/laks/PycharmProjects/scandinavian-language-identification/nordic_langid_data/nordic_dsl_test50k.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='fasttext_hf_hub', dataset='/home/laks/PycharmProjects/scandinavian-language-identification/nordic_langid_data/nordic_dsl_test50k.jsonl', model='cis-lmu/glotlid', threshold=0.5, other_if_below_threshold=False, run_name='fasttext_hf_hub_cis-lmuglotlid-0.5-on-homelaksPycharmProjectsscandinavian-language-identificationnordic_langid_datanordic_dsl_test50k.jsonl', log_fn='eval_logs/fasttext_hf_hub_cis-lmuglotlid-0.5-on-homelaksPycharmProjectsscandinavian-language-identificationnordic_langid_datanordic_dsl_test50k.jsonl')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for fasttext_hf_hub:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 96.19%
+INFO:root:	Loose macro F1: 95.97%
+INFO:root:	Loose macro MCC: 95.12%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 94.54%
+INFO:root:		MCC: 93.64%
+INFO:root:	nn:
+INFO:root:		F1: 96.84%
+INFO:root:		MCC: 96.27%
+INFO:root:	da:
+INFO:root:		F1: 95.40%
+INFO:root:		MCC: 94.66%
+INFO:root:	sv:
+INFO:root:		F1: 95.87%
+INFO:root:		MCC: 95.18%
+INFO:root:	other:
+INFO:root:		F1: 97.21%
+INFO:root:		MCC: 95.87%
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 96.19%
+INFO:root:	Overlap F1: 96.19%
+INFO:root:	Strict macro F1: 95.97%
+INFO:root:	Strict macro MCC: 95.02%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 94.54%
+INFO:root:		MCC: 93.44%
+INFO:root:	nn:
+INFO:root:		F1: 96.84%
+INFO:root:		MCC: 96.20%
+INFO:root:	da:
+INFO:root:		F1: 95.40%
+INFO:root:		MCC: 94.54%
+INFO:root:	sv:
+INFO:root:		F1: 95.87%
+INFO:root:		MCC: 95.10%
+INFO:root:	other:
+INFO:root:		F1: 97.21%
+INFO:root:		MCC: 95.83%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 10.73 seconds
+INFO:root:	ms / sentence: 0.72 ms
