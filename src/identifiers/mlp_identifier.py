@@ -5,6 +5,7 @@ from huggingface_hub import hf_hub_download
 import torch
 
 from identifiers.abstract_language_identifier import AbstractLanguageIdentifier
+from identifiers.mlp import MlpClassifier
 
 
 class MlpIdentifier(AbstractLanguageIdentifier):
@@ -12,8 +13,9 @@ class MlpIdentifier(AbstractLanguageIdentifier):
         super().__init__(args)
         self.threshold = args.threshold
         model_path = hf_hub_download(repo_id=args.model,
-                                     filename="pytorch_model.bin")
-        self.clf = torch.load(model_path, weights_only=False)
+                                    filename="pytorch_model.bin")
+        self.clf = MlpClassifier()
+        self.clf.load_state_dict(torch.load(model_path, weights_only=True))
         self.clf.eval()
         self.id2label = {}
         model_path = hf_hub_download(repo_id='cis-lmu/glotlid',

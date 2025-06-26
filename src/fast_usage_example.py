@@ -3,12 +3,15 @@ import torch
 from transformers import set_seed
 from huggingface_hub import hf_hub_download
 
+from identifiers.mlp import MlpClassifier
 
 if __name__ == '__main__':
     set_seed(42)
     model_path = hf_hub_download(repo_id='ltg/SLIDE-fast',
                                  filename="pytorch_model.bin")
-    model = torch.load(model_path, weights_only=False)
+    model = MlpClassifier()
+    model.load_state_dict(torch.load(model_path, weights_only=True))
+    model.eval()
     id2label = {i: label for i, label in enumerate(["nb", "nn", "da", "sv", "other"])}
     print("Loading FastText model from HF")
     model_path = hf_hub_download(repo_id='cis-lmu/glotlid',

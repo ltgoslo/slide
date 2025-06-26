@@ -1,0 +1,56 @@
+INFO:root:Evaluation of mlp started
+INFO:root:Loading dataset from /home/laks/PycharmProjects/scandinavian-language-identification/nordic_langid_data/nordic_dsl_test50k.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='mlp', dataset='/home/laks/PycharmProjects/scandinavian-language-identification/nordic_langid_data/nordic_dsl_test50k.jsonl', model='ltg/SLIDE-fast', threshold=0.5, other_if_below_threshold=False, run_name='mlp_ltgSLIDE-fast-0.5-on-homelaksPycharmProjectsscandinavian-language-identificationnordic_langid_datanordic_dsl_test50k.jsonl', log_fn='eval_logs/mlp_ltgSLIDE-fast-0.5-on-homelaksPycharmProjectsscandinavian-language-identificationnordic_langid_datanordic_dsl_test50k.jsonl')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for mlp:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 94.89%
+INFO:root:	Loose macro F1: 94.53%
+INFO:root:	Loose macro MCC: 93.34%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 92.06%
+INFO:root:		MCC: 90.68%
+INFO:root:	nn:
+INFO:root:		F1: 94.93%
+INFO:root:		MCC: 93.99%
+INFO:root:	da:
+INFO:root:		F1: 94.23%
+INFO:root:		MCC: 93.25%
+INFO:root:	sv:
+INFO:root:		F1: 95.37%
+INFO:root:		MCC: 94.58%
+INFO:root:	other:
+INFO:root:		F1: 96.06%
+INFO:root:		MCC: 94.19%
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 94.89%
+INFO:root:	Overlap F1: 95.53%
+INFO:root:	Strict macro F1: 95.16%
+INFO:root:	Strict macro MCC: 93.99%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 93.44%
+INFO:root:		MCC: 92.11%
+INFO:root:	nn:
+INFO:root:		F1: 95.46%
+INFO:root:		MCC: 94.55%
+INFO:root:	da:
+INFO:root:		F1: 95.04%
+INFO:root:		MCC: 94.11%
+INFO:root:	sv:
+INFO:root:		F1: 95.80%
+INFO:root:		MCC: 95.08%
+INFO:root:	other:
+INFO:root:		F1: 96.06%
+INFO:root:		MCC: 94.11%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 5.60 seconds
+INFO:root:	ms / sentence: 0.37 ms

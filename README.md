@@ -1,11 +1,14 @@
 # SLIDE
 
-[![arXiv](https://img.shields.io/badge/arXiv-2502.06692-b31b1b.svg)](http://arxiv.org/abs/2502.06692)
-
 Data and code (still being added) for the paper Multi-label Scandinavian Language Identification (SLIDE) (presented at [RESOURCEFUL-2025](https://resourceful-workshop.github.io/resourceful-2025/papers.html)).
 
-##### [Models on HuggingFace](https://huggingface.co/collections/ltg/slide-67d4538eac9736a6f068bf2a) and [how to use them](src/usage_example.py)
+##### [Models on HuggingFace](https://huggingface.co/collections/ltg/slide-67d4538eac9736a6f068bf2a) 
 
+- [how to run BERTs](src/usage_example.py)
+- [how to run SLIDE-Fast](src/fast_usage_example.py)
+
+SLIDE-Fast available on Huggingface now is an updated version which scores Strict Accuracy **93.6** on our test dataset and **94.9** on [Haas and Derczynski, 2021](https://aclanthology.org/2021.vardial-1.8/).
+ 
 ##### reproduce metrics (table 4):
 
 ```commandline
@@ -29,3 +32,5 @@ The values in table 5 were obtained with the understanding of loose accuracy as 
 
 The actual evaluate.py accepts a prediction if it is a subset of gold languages, not an intersection. (Values in table 4 were obtained with this understanding).
 However, while it influences exact values (less than 2%), the models' ranking remains the same.
+
+
