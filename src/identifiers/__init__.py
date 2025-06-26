@@ -5,3 +5,4 @@ from .fasttext_hf_hub_identifier import FasttextHfHubIdentifier
 from .fasttext_identifier import FasttextLanguageIdentifier
 from .openlid_identifier import OpenlidLanguageIdentifier
 from .bert_identifier import BERTIdentifier
+from .mlp_identifier import MlpIdentifier

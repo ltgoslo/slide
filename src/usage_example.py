@@ -2,13 +2,14 @@ import os
 
 import torch
 from torch.cuda import is_available
-from transformers import AutoModelForSequenceClassification
+from transformers import AutoModelForSequenceClassification, set_seed
 
 from identifiers.custom_tokenizer import CustomTokenizer
 
 SIGMOID_THRESHOLD = 0.5
 
 if __name__ == '__main__':
+    set_seed(42)
     model_name = 'ltg/SLIDE-base'
     device = torch.device('cuda') if is_available() else torch.device('cpu')
     model = AutoModelForSequenceClassification.from_pretrained(
@@ -22,12 +23,12 @@ if __name__ == '__main__':
     )
 
     texts = [
-        'En dag i livet',
-        'Jag vill ha deg',
-        'Jeg er hvalrossen',
-        'Denne fuglen har flydd',
-        'not a Scandinavian text at all',
-        'i sit berømte værk die normen und ihre bertretung i',
+        'En dag i livet',  # partially correct (not nynorsk)
+        'Jag vill ha deg',  # partially correct (should be sv only)
+        'Jeg er hvalrossen',  # correct (da, nb)
+        'Denne fuglen har flydd',  # correct (nb, nn)
+        'not a Scandinavian text at all',  # correct (other)
+        'i sit berømte værk die normen und ihre bertretung i',  # ideally, would be da, although includes other
     ]
 
     with torch.no_grad():

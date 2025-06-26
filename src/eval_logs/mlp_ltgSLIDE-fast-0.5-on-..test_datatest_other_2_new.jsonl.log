@@ -1,0 +1,56 @@
+INFO:root:Evaluation of mlp started
+INFO:root:Loading dataset from ../test_data/test_other_2_new.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='mlp', dataset='../test_data/test_other_2_new.jsonl', model='ltg/SLIDE-fast', threshold=0.5, other_if_below_threshold=False, run_name='mlp_ltgSLIDE-fast-0.5-on-..test_datatest_other_2_new.jsonl', log_fn='eval_logs/mlp_ltgSLIDE-fast-0.5-on-..test_datatest_other_2_new.jsonl')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for mlp:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 95.81%
+INFO:root:	Loose macro F1: 94.79%
+INFO:root:	Loose macro MCC: 93.56%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 94.24%
+INFO:root:		MCC: 91.88%
+INFO:root:	nn:
+INFO:root:		F1: 93.99%
+INFO:root:		MCC: 92.35%
+INFO:root:	da:
+INFO:root:		F1: 91.29%
+INFO:root:		MCC: 90.58%
+INFO:root:	sv:
+INFO:root:		F1: 97.74%
+INFO:root:		MCC: 97.27%
+INFO:root:	other:
+INFO:root:		F1: 96.71%
+INFO:root:		MCC: 95.72%
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 93.58%
+INFO:root:	Overlap F1: 96.21%
+INFO:root:	Strict macro F1: 94.42%
+INFO:root:	Strict macro MCC: 93.01%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 95.04%
+INFO:root:		MCC: 92.92%
+INFO:root:	nn:
+INFO:root:		F1: 92.79%
+INFO:root:		MCC: 90.61%
+INFO:root:	da:
+INFO:root:		F1: 90.37%
+INFO:root:		MCC: 89.34%
+INFO:root:	sv:
+INFO:root:		F1: 97.16%
+INFO:root:		MCC: 96.53%
+INFO:root:	other:
+INFO:root:		F1: 96.71%
+INFO:root:		MCC: 95.65%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 0.77 seconds
+INFO:root:	ms / sentence: 0.11 ms

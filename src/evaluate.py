@@ -19,6 +19,7 @@ from identifiers import (
     FasttextLanguageIdentifier,
     OpenlidLanguageIdentifier,
     BERTIdentifier,
+    MlpIdentifier,
 )
 
 OUT_DIR = 'eval_logs/'
@@ -280,6 +281,8 @@ def main():
         identifier = OpenlidLanguageIdentifier(args)
     elif is_bert:
         identifier = BERTIdentifier(args)
+    elif args.method == 'mlp':
+        identifier = MlpIdentifier(args)
     evaluate(args, identifier)
 
 
