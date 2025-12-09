@@ -17,7 +17,6 @@ from identifiers import (
     RandomLanguageIdentifier,
     FasttextHfHubIdentifier,
     FasttextLanguageIdentifier,
-    OpenlidLanguageIdentifier,
     BERTIdentifier,
     MlpIdentifier,
 )
@@ -277,8 +276,6 @@ def main():
         identifier = GPT2Identifier(args)
     elif args.method == "fasttext":
         identifier = FasttextLanguageIdentifier(args)
-    elif args.method == "openlid":
-        identifier = OpenlidLanguageIdentifier(args)
     elif is_bert:
         identifier = BERTIdentifier(args)
     elif args.method == 'mlp':
