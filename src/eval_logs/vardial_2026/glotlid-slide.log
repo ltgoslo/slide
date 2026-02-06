@@ -1,0 +1,67 @@
+INFO:root:Evaluation of fasttext_hf_hub started
+INFO:root:Loading dataset from ../test_data/test_other_2_new.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='fasttext_hf_hub', dataset='../test_data/test_other_2_new.jsonl', model='cis-lmu/glotlid', second_model='../../OpenLID-v2/new_data/oci_no_pilar_frp/train/openlid-v3.bin', threshold=0.0, other_if_below_threshold=False, k=1, languages='nb,nn,da,sv,other', run_name='fasttext_hf_hub_cis-lmuglotlid-k-1-0.0-on-..test_datatest_other_2_new.jsonl', log_fn='eval_logs/fasttext_hf_hub_cis-lmuglotlid-k-1-0.0-on-..test_datatest_other_2_new.jsonl')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for fasttext_hf_hub:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 97.19%
+INFO:root:	Loose macro F1: 96.06%
+INFO:root:	Loose macro MCC: 95.25%
+INFO:root:	Loose macro Precision: 100.00%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 95.83%
+INFO:root:		MCC: 94.31%
+INFO:root:		Precision: 100.00%
+INFO:root:{'f1': 0.893807393454203, 'tn': 5049, 'tp': 1898, 'fn': 200, 'fp': 251, 'fpr': 0.047358490566037734, 'precision': 0.8832014890646812, 'recall': 0.9046711153479504}
+INFO:root:	nn:
+INFO:root:		F1: 94.84%
+INFO:root:		MCC: 93.71%
+INFO:root:		Precision: 100.00%
+INFO:root:{'f1': 0.8829609869956653, 'tn': 5723, 'tp': 1324, 'fn': 304, 'fp': 47, 'fpr': 0.008145580589254766, 'precision': 0.9657184536834428, 'recall': 0.8132678132678133}
+INFO:root:	da:
+INFO:root:		F1: 93.37%
+INFO:root:		MCC: 92.95%
+INFO:root:		Precision: 100.00%
+INFO:root:{'f1': 0.8319088319088319, 'tn': 6578, 'tp': 584, 'fn': 93, 'fp': 143, 'fpr': 0.02127659574468085, 'precision': 0.8033012379642366, 'recall': 0.8626292466765141}
+INFO:root:	sv:
+INFO:root:		F1: 98.23%
+INFO:root:		MCC: 97.86%
+INFO:root:		Precision: 100.00%
+INFO:root:{'f1': 0.9662832209440698, 'tn': 6095, 'tp': 1218, 'fn': 32, 'fp': 53, 'fpr': 0.008620689655172414, 'precision': 0.9583005507474429, 'recall': 0.9744}
+INFO:root:	other:
+INFO:root:		F1: 98.05%
+INFO:root:		MCC: 97.41%
+INFO:root:		Precision: 100.00%
+INFO:root:{'f1': 0.9550344827586207, 'tn': 5504, 'tp': 1731, 'fn': 14, 'fp': 149, 'fpr': 0.026357686184326906, 'precision': 0.9207446808510639, 'recall': 0.9919770773638968}
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 93.41%
+INFO:root:	Overlap F1: 95.78%
+INFO:root:	Strict macro F1: 93.66%
+INFO:root:	Strict macro MCC: 92.29%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 93.45%
+INFO:root:		MCC: 90.85%
+INFO:root:	nn:
+INFO:root:		F1: 89.43%
+INFO:root:		MCC: 87.30%
+INFO:root:	da:
+INFO:root:		F1: 89.50%
+INFO:root:		MCC: 88.49%
+INFO:root:	sv:
+INFO:root:		F1: 97.87%
+INFO:root:		MCC: 97.41%
+INFO:root:	other:
+INFO:root:		F1: 98.05%
+INFO:root:		MCC: 97.39%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 1.88 seconds
+INFO:root:	ms / sentence: 0.27 ms
