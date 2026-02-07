@@ -1,0 +1,3 @@
+[submodule "src/openlid-v3-evaluation"]
+	path = src/openlid-v3-evaluation
+	url = git@github.com:hplt-project/openlid-v3-evaluation.git
