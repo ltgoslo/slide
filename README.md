@@ -65,3 +65,18 @@ However, while it influences exact values (less than 2%), the models' ranking re
 }
 ```
 
+##### Reformat UDHR, FLORES+ test data to our format
+
+! FLORES+ is gated on the Huggingface Hub, ask for access first
+
+```shell
+cd src/openlid-v3-evaluation/
+git submodule init
+git submodule update
+cd src/evaluation/
+python3 scripts/download_udhr.py
+python3 scripts/download_flores_plus.py
+cd ../../../
+python3 udhr2jsonl.py
+python3 flores2jsonl.py
+```

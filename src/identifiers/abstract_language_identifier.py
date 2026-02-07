@@ -1,9 +1,9 @@
 from typing import List
 
 class AbstractLanguageIdentifier:
-    def __init__(self, args):
+    def __init__(self, args, languages=("nb", "nn", "da", "sv", "other")):
         self.args = args
-        self.languages = ["nb", "nn", "da", "sv", "other"]
+        self.languages = languages
 
     # This method should return a list of languages that the given text could be written in
     # A language can be either ("nb", "nn", "da", "sv" or "other")

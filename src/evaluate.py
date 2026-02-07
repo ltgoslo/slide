@@ -19,6 +19,7 @@ from identifiers import (
     FasttextLanguageIdentifier,
     BERTIdentifier,
     MlpIdentifier,
+    FasttextEnsembleIdentifier,
 )
 
 OUT_DIR = 'eval_logs/'
@@ -34,6 +35,7 @@ def parse_args():
         type=str,
         default="fasttext_hf_hub",
         help="The method to use for language identification",
+        choices=("fasttext_ensemble", "bert", "random", "fasttext_hf_hub", "gpt2", "fasttext", "mlp"),
     )
     parser.add_argument(
         "--dataset",
@@ -43,20 +45,29 @@ def parse_args():
     )
     parser.add_argument(
         "--model",
-                        default="cis-lmu/glotlid",
+        default="cis-lmu/glotlid",
+    )
+    parser.add_argument(
+        "--second_model",
+        default="../../OpenLID-v2/new_data/oci_no_pilar_frp/train/openlid-v3.bin",
+        help="Used only if method is fasttext_ensemble"
     )
     parser.add_argument("--threshold", type=float, default=0.5)
-    parser.add_argument("--other_if_below_threshold", action="store_true")
+    parser.add_argument("--other_if_below_threshold", action="store_true", help="for bert")
+    parser.add_argument("--k", type=int, default=1, help="FastText k")
+    parser.add_argument("--languages", default="nb,nn,da,sv,other")
+    parser.add_argument("--run_name", default="")
     return parser.parse_args()
 
 
-def draw_confusion_matrix(confusion_matrix, supported_languages, args):
+def draw_confusion_matrix(confusion_matrix, supported_languages, predicted_languages, args):
     heatmap(
         confusion_matrix,
         annot=True,
         fmt=".0f",
-        xticklabels=supported_languages, yticklabels=supported_languages,
+        xticklabels=predicted_languages, yticklabels=supported_languages,
     )
+    plt.tight_layout()
     plt.savefig(args.log_fn + '_cm.pdf', format='pdf')
 
 
@@ -110,6 +121,32 @@ def count_loose(
     return loose_accuracy, loose_per_language_f1, loose_per_language_mcc
 
 
+def calculate_metrics(confusion_matrix, allowed_languages):
+    per_langauge = {}
+
+    for i, gold in enumerate(confusion_matrix):
+        tn = 0
+        for k, row in enumerate(confusion_matrix):
+            tn += sum([x for h, x in enumerate(row) if (h!= i) and (k!=i)])
+
+        tp = confusion_matrix[i][i]
+        fn = sum(confusion_matrix[i][j] for j in range(len(confusion_matrix)) if j != i)
+        fp = sum(confusion_matrix[j][i] for j in range(len(confusion_matrix)) if j != i)
+        real_negatives = fp + tn
+        fpr = fp / real_negatives if real_negatives > 0 else 0
+
+        precision = tp / (tp + fp) if (tp + fp) > 0 else 0
+        recall = tp / (tp + fn) if (tp + fn) > 0 else 0
+
+        f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0
+
+        per_langauge[allowed_languages[i]] = {
+            "f1": f1, "tn":tn, "tp": tp, "fn": fn, "fp": fp, "fpr": fpr, "precision": precision, "recall": recall,
+        }
+
+    return per_langauge
+
+
 # prints the confusion matrix, accuracy, precision, recall and macro f1-score
 # calculates the loose scores -- if the correct language is in the list of predicted languages, the prediction is considered correct
 def evaluate(args, identifier: AbstractLanguageIdentifier):
@@ -139,17 +176,22 @@ def evaluate(args, identifier: AbstractLanguageIdentifier):
 
     start_time = time.time()
     logging.info(args)
+    predicted_languages_unique = set()
     for i, sample in enumerate(tqdm(samples)):
         text = sample["text"]
         sample[GOLD_LANGUAGES] = set(sample["languages"])
         sample[PREDICTED_LANGUAGES] = set(identifier.identify(text))
-
+        predicted_languages_unique.update(sample[PREDICTED_LANGUAGES])
+    if predicted_languages_unique == set(supported_languages):
+        predicted_languages_unique = supported_languages
+    else:
+        predicted_languages_unique = list(predicted_languages_unique)
     end_time = time.time()
 
     logging.info("Calculating metrics...")
-    confusion_matrix = [[0 for _ in supported_languages] for lang in
+    confusion_matrix = [[0 for _ in predicted_languages_unique] for lang in
                         supported_languages]
-    with open(f'{OUT_DIR}/predictions-{args.run_name}.jsonl',
+    with open(f'{OUT_DIR}/{args.run_name}-predictions.jsonl',
               'w') as pred_file:
         for sample in samples:
             gold_languages = sample[GOLD_LANGUAGES]
@@ -157,7 +199,7 @@ def evaluate(args, identifier: AbstractLanguageIdentifier):
             for lang_gold in gold_languages:
                 for lang in predicted_languages:
                     confusion_matrix[supported_languages.index(lang_gold)][
-                        supported_languages.index(lang)
+                        predicted_languages_unique.index(lang)
                     ] += 1
 
             loose_accuracy, loose_per_language_f1, loose_per_language_mcc = count_loose(
@@ -210,8 +252,8 @@ def evaluate(args, identifier: AbstractLanguageIdentifier):
                                                                 torch.zeros(1))
                         strict_per_language_mcc[language].update(
                             torch.zeros(1), torch.zeros(1))
-
-    draw_confusion_matrix(confusion_matrix, supported_languages, args)
+    per_language = calculate_metrics(confusion_matrix, supported_languages)
+    draw_confusion_matrix(confusion_matrix, supported_languages, predicted_languages_unique, args)
     logging.info(f"\n# Results for {args.method}:\n")
     logging.info("## Loose metrics")
     logging.info(f"\tLoose accuracy: {loose_accuracy.compute().item():.2%}")
@@ -219,6 +261,7 @@ def evaluate(args, identifier: AbstractLanguageIdentifier):
         f"\tLoose macro F1: {sum([loose_per_language_f1[language].compute().item() for language in supported_languages]) / len(supported_languages):.2%}")
     logging.info(
         f"\tLoose macro MCC: {sum([loose_per_language_mcc[language].compute().item() for language in supported_languages]) / len(supported_languages):.2%}")
+
     logging.info("### Per-language metrics")
     for language in supported_languages:
         logging.info(f"\t{language}:")
@@ -226,6 +269,7 @@ def evaluate(args, identifier: AbstractLanguageIdentifier):
             f"\t\tF1: {loose_per_language_f1[language].compute().item():.2%}")
         logging.info(
             f"\t\tMCC: {loose_per_language_mcc[language].compute().item():.2%}")
+        logging.info(per_language[language])
 
     logging.info("\n\n## Strict metrics")
     logging.info(f"\tStrict accuracy: {strict_accuracy.compute().item():.2%}")
@@ -252,11 +296,12 @@ def main():
     random.seed(42)
     torch.manual_seed(42)
     os.environ["PYTHONHASHSEED"] = "42"
-    os.makedirs(OUT_DIR, exist_ok=True)
     args = parse_args()
-    args.run_name = f"{args.method}_{args.model}-{args.threshold}-on-{args.dataset}".replace(
-        '/', ''
-    )
+    os.makedirs(os.path.join(OUT_DIR, args.model, args.dataset), exist_ok=True)
+    if not args.run_name:
+        args.run_name = f"{args.method}_{args.model}-k-{args.k}-{args.threshold}-on-{args.dataset}".replace(
+            '/', ''
+        )
     is_bert = args.method == "bert"
     if is_bert:
         args.run_name += f"-other_if_below_threshold-{args.other_if_below_threshold}"
@@ -270,9 +315,9 @@ def main():
 
     if args.method == "random":
         identifier = RandomLanguageIdentifier(args)
-    elif args.method == 'fasttext_hf_hub':
-        identifier = FasttextHfHubIdentifier(args, repo_id=args.model)
-    elif args.method == 'gpt2':
+    elif args.method == "fasttext_hf_hub":
+        identifier = FasttextHfHubIdentifier(args, languages=args.languages.split(','), repo_id=args.model)
+    elif args.method == "gpt2":
         identifier = GPT2Identifier(args)
     elif args.method == "fasttext":
         identifier = FasttextLanguageIdentifier(args)
@@ -280,6 +325,8 @@ def main():
         identifier = BERTIdentifier(args)
     elif args.method == 'mlp':
         identifier = MlpIdentifier(args)
+    elif args.method == 'fasttext_ensemble':
+        identifier = FasttextEnsembleIdentifier(args, languages=args.languages.split(','))
     evaluate(args, identifier)
 
 

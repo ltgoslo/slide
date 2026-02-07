@@ -1,0 +1,61 @@
+INFO:root:Evaluation of fasttext_hf_hub started
+INFO:root:Loading dataset from nordic_dsl_test50k.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='fasttext_hf_hub', dataset='nordic_dsl_test50k.jsonl', model='laurievb/OpenLID-v2', second_model='../../OpenLID-v2/new_data/oci_no_pilar_frp/train/openlid-v3.bin', threshold=0.5, other_if_below_threshold=False, k=1, languages='nb,nn,da,sv,other', run_name='vardial_2026/v2-nordic_dsl_test50k.jsonl', log_fn='eval_logs/vardial_2026/v2-nordic_dsl_test50k.jsonl')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for fasttext_hf_hub:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 93.96%
+INFO:root:	Loose macro F1: 93.47%
+INFO:root:	Loose macro MCC: 92.28%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 88.49%
+INFO:root:		MCC: 87.13%
+INFO:root:{'f1': 0.8849411278661433, 'tn': 12261, 'tp': 2142, 'fn': 367, 'fp': 190, 'fpr': 0.015259818488474821, 'precision': 0.91852487135506, 'recall': 0.8537265842965325}
+INFO:root:	nn:
+INFO:root:		F1: 94.30%
+INFO:root:		MCC: 93.33%
+INFO:root:{'f1': 0.9429951690821257, 'tn': 12225, 'tp': 2440, 'fn': 82, 'fp': 213, 'fpr': 0.017124939700916546, 'precision': 0.919713531850735, 'recall': 0.9674861221252974}
+INFO:root:	da:
+INFO:root:		F1: 92.84%
+INFO:root:		MCC: 91.83%
+INFO:root:{'f1': 0.928421052631579, 'tn': 12415, 'tp': 2205, 'fn': 251, 'fp': 89, 'fpr': 0.007117722328854766, 'precision': 0.9612031386224935, 'recall': 0.8978013029315961}
+INFO:root:	sv:
+INFO:root:		F1: 95.65%
+INFO:root:		MCC: 94.94%
+INFO:root:{'f1': 0.9565038136466707, 'tn': 12429, 'tp': 2320, 'fn': 182, 'fp': 29, 'fpr': 0.0023278214801733827, 'precision': 0.9876543209876543, 'recall': 0.9272581934452439}
+INFO:root:	other:
+INFO:root:		F1: 96.07%
+INFO:root:		MCC: 94.18%
+INFO:root:{'f1': 0.9606910608560614, 'tn': 9606, 'tp': 4949, 'fn': 22, 'fp': 383, 'fpr': 0.038342176394033436, 'precision': 0.9281695423855963, 'recall': 0.9955743311204989}
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 93.96%
+INFO:root:	Overlap F1: 93.96%
+INFO:root:	Strict macro F1: 93.47%
+INFO:root:	Strict macro MCC: 92.02%
+INFO:root:### Per-language metrics
+INFO:root:	nb:
+INFO:root:		F1: 88.49%
+INFO:root:		MCC: 86.36%
+INFO:root:	nn:
+INFO:root:		F1: 94.30%
+INFO:root:		MCC: 93.15%
+INFO:root:	da:
+INFO:root:		F1: 92.84%
+INFO:root:		MCC: 91.57%
+INFO:root:	sv:
+INFO:root:		F1: 95.65%
+INFO:root:		MCC: 94.88%
+INFO:root:	other:
+INFO:root:		F1: 96.07%
+INFO:root:		MCC: 94.14%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 1.51 seconds
+INFO:root:	ms / sentence: 0.10 ms

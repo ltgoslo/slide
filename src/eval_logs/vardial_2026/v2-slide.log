@@ -1,67 +1,61 @@
 INFO:root:Evaluation of fasttext_hf_hub started
 INFO:root:Loading dataset from ../test_data/test_other_2_new.jsonl...
 INFO:root:Running inference...
-INFO:root:Namespace(method='fasttext_hf_hub', dataset='../test_data/test_other_2_new.jsonl', model='laurievb/OpenLID', second_model='../../OpenLID-v2/new_data/oci_no_pilar_frp/train/openlid-v3.bin', threshold=0.5, other_if_below_threshold=False, k=1, languages='nb,nn,da,sv,other', run_name='fasttext_hf_hub_laurievbOpenLID-k-1-0.5-on-..test_datatest_other_2_new.jsonl', log_fn='eval_logs/fasttext_hf_hub_laurievbOpenLID-k-1-0.5-on-..test_datatest_other_2_new.jsonl')
+INFO:root:Namespace(method='fasttext_hf_hub', dataset='../test_data/test_other_2_new.jsonl', model='laurievb/OpenLID-v2', second_model='../../OpenLID-v2/new_data/oci_no_pilar_frp/train/openlid-v3.bin', threshold=0.5, other_if_below_threshold=False, k=1, languages='nb,nn,da,sv,other', run_name='vardial_2026/v2-slide', log_fn='eval_logs/vardial_2026/v2-slide')
 INFO:root:Calculating metrics...
 INFO:root:
 # Results for fasttext_hf_hub:
 
 INFO:root:## Loose metrics
-INFO:root:	Loose accuracy: 94.81%
-INFO:root:	Loose macro F1: 93.44%
-INFO:root:	Loose macro MCC: 92.18%
-INFO:root:	Loose macro Precision: 100.00%
+INFO:root:	Loose accuracy: 95.63%
+INFO:root:	Loose macro F1: 94.51%
+INFO:root:	Loose macro MCC: 93.37%
 INFO:root:### Per-language metrics
 INFO:root:	nb:
-INFO:root:		F1: 94.00%
-INFO:root:		MCC: 91.94%
-INFO:root:		Precision: 100.00%
-INFO:root:{'f1': 0.877453326950694, 'tn': 5053, 'tp': 1833, 'fn': 265, 'fp': 247, 'fpr': 0.04660377358490566, 'precision': 0.88125, 'recall': 0.8736892278360343}
+INFO:root:		F1: 94.16%
+INFO:root:		MCC: 92.14%
+INFO:root:{'f1': 0.8768098741989082, 'tn': 5032, 'tp': 1847, 'fn': 251, 'fp': 268, 'fpr': 0.050566037735849056, 'precision': 0.8732860520094563, 'recall': 0.8803622497616778}
 INFO:root:	nn:
-INFO:root:		F1: 93.36%
-INFO:root:		MCC: 91.83%
-INFO:root:		Precision: 100.00%
-INFO:root:{'f1': 0.8691327323593411, 'tn': 5579, 'tp': 1398, 'fn': 230, 'fp': 191, 'fpr': 0.03310225303292894, 'precision': 0.8797986154814349, 'recall': 0.8587223587223587}
+INFO:root:		F1: 94.12%
+INFO:root:		MCC: 92.78%
+INFO:root:{'f1': 0.8742857142857141, 'tn': 5625, 'tp': 1377, 'fn': 251, 'fp': 145, 'fpr': 0.02512998266897747, 'precision': 0.90473061760841, 'recall': 0.8458230958230958}
 INFO:root:	da:
-INFO:root:		F1: 89.26%
-INFO:root:		MCC: 88.85%
-INFO:root:		Precision: 100.00%
-INFO:root:{'f1': 0.8102025506376594, 'tn': 6605, 'tp': 540, 'fn': 137, 'fp': 116, 'fpr': 0.01725933640827258, 'precision': 0.823170731707317, 'recall': 0.7976366322008862}
+INFO:root:		F1: 91.58%
+INFO:root:		MCC: 91.18%
+INFO:root:{'f1': 0.8273764258555133, 'tn': 6627, 'tp': 544, 'fn': 133, 'fp': 94, 'fpr': 0.013986013986013986, 'precision': 0.8526645768025078, 'recall': 0.8035450516986706}
 INFO:root:	sv:
-INFO:root:		F1: 96.84%
-INFO:root:		MCC: 96.22%
-INFO:root:		Precision: 100.00%
-INFO:root:{'f1': 0.9576907868722816, 'tn': 6080, 'tp': 1211, 'fn': 39, 'fp': 68, 'fpr': 0.011060507482108002, 'precision': 0.9468334636434714, 'recall': 0.9688}
+INFO:root:		F1: 97.38%
+INFO:root:		MCC: 96.86%
+INFO:root:{'f1': 0.963375796178344, 'tn': 6096, 'tp': 1210, 'fn': 40, 'fp': 52, 'fpr': 0.008458035133376708, 'precision': 0.9587955625990491, 'recall': 0.968}
 INFO:root:	other:
-INFO:root:		F1: 93.76%
-INFO:root:		MCC: 92.04%
-INFO:root:		Precision: 100.00%
-INFO:root:{'f1': 0.9081661486295562, 'tn': 5466, 'tp': 1607, 'fn': 138, 'fp': 187, 'fpr': 0.03307978064744384, 'precision': 0.8957636566332219, 'recall': 0.9209169054441261}
+INFO:root:		F1: 95.29%
+INFO:root:		MCC: 93.89%
+INFO:root:{'f1': 0.9251247920133111, 'tn': 5460, 'tp': 1668, 'fn': 77, 'fp': 193, 'fpr': 0.03414116398372546, 'precision': 0.8962923159591617, 'recall': 0.9558739255014327}
 INFO:root:
 
 ## Strict metrics
-INFO:root:	Strict accuracy: 91.14%
-INFO:root:	Overlap F1: 93.45%
-INFO:root:	Strict macro F1: 91.08%
-INFO:root:	Strict macro MCC: 89.01%
+INFO:root:	Strict accuracy: 91.83%
+INFO:root:	Overlap F1: 94.22%
+INFO:root:	Strict macro F1: 92.02%
+INFO:root:	Strict macro MCC: 90.20%
 INFO:root:### Per-language metrics
 INFO:root:	nb:
-INFO:root:		F1: 91.42%
-INFO:root:		MCC: 88.14%
+INFO:root:		F1: 91.66%
+INFO:root:		MCC: 88.42%
 INFO:root:	nn:
-INFO:root:		F1: 89.85%
-INFO:root:		MCC: 87.08%
+INFO:root:		F1: 90.06%
+INFO:root:		MCC: 87.57%
 INFO:root:	da:
-INFO:root:		F1: 83.92%
-INFO:root:		MCC: 82.42%
+INFO:root:		F1: 86.08%
+INFO:root:		MCC: 84.95%
 INFO:root:	sv:
-INFO:root:		F1: 96.46%
-INFO:root:		MCC: 95.68%
+INFO:root:		F1: 96.99%
+INFO:root:		MCC: 96.34%
 INFO:root:	other:
-INFO:root:		F1: 93.76%
-INFO:root:		MCC: 91.74%
+INFO:root:		F1: 95.29%
+INFO:root:		MCC: 93.70%
 INFO:root:
 
 ## CPU inference time
-INFO:root:	Total runtime: 0.58 seconds
+INFO:root:	Total runtime: 0.53 seconds
 INFO:root:	ms / sentence: 0.08 ms

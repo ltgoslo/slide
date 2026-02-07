@@ -13,24 +13,26 @@ NONWORD_REPLACE_PATTERN = regex.compile(NONWORD_REPLACE_STR)
 SPACE_PATTERN = regex.compile(r"\s\s+")  # squeezes sequential whitespace
 
 
-class FasttextHfHubIdentifier(AbstractLanguageIdentifier):
+class FasttextEnsembleIdentifier(AbstractLanguageIdentifier):
     def __init__(
             self,
             args,
             languages,
-            repo_id="facebook/fasttext-language-identification",
             filename="model.bin",
-            other='other',
         ):
         super().__init__(args, languages)
-        self.repo_id = repo_id
-        if not 'bin' in repo_id:
-            model_path = hf_hub_download(repo_id=repo_id, filename=filename)
-        else:
-            model_path = repo_id
-        self.model = fasttext.load_model(model_path)
+        self.repo_id = args.model  # always GlotLid
+        self.second_repo_id = args.second_model  # always OpenLID
+        self.model = self._load_model(self.repo_id, filename)
+        self.second_model = self._load_model(self.second_repo_id, filename)
         self.threshold = args.threshold
-        self.other = other
+        self.k = args.k
+
+    @staticmethod
+    def _load_model(model_path, filename):
+        if not 'bin' in model_path:
+            model_path = hf_hub_download(repo_id=model_path, filename=filename)
+        return fasttext.load_model(model_path)
 
     def _preproccess_text(self, text: str) -> str:
         """Preprocesses a single line of text for lang ID."""
@@ -44,15 +46,20 @@ class FasttextHfHubIdentifier(AbstractLanguageIdentifier):
         return text
 
     def identify(self, text: str) -> List[str]:
-        if 'OpenLID' in self.repo_id:
+        prediction, _ = self.model.predict(text, k=self.k)
+        if 'OpenLID' in self.second_repo_id:
             text = self._preproccess_text(text)
-        prediction, scores = self.model.predict(text)
-        if not prediction[0]:
-            return [self.other]
+        second_prediction, second_scores = self.second_model.predict(text)
+        if not prediction[0]: # may be redundant
+            prediction[0] = ['other']
+        if not second_prediction[0]:
+            second_prediction[0] = ['other']
         predictions = []
-        for pred, score in zip(prediction, scores):
-            if score > self.threshold:
-                language = pred.replace("__label__", "")
+        second_pred = second_prediction[0]
+        second_score = second_scores[0]
+        if second_pred in prediction:
+            if second_score > self.threshold:  # thresholding only for OpenLID. different from FastText where it is greater or equal
+                language = second_pred.replace("__label__", "")
                 if language.startswith("nob") or (language == 'nb'):
                     predictions.append("nb")
                 if language.startswith("nno") or (language == 'nn'):
@@ -61,15 +68,10 @@ class FasttextHfHubIdentifier(AbstractLanguageIdentifier):
                     predictions.append("da")
                 if language.startswith("swe") or (language == 'sv'):
                     predictions.append("sv")
-                if "nb" not in self.languages:
-                    if language == "cnr_Latn":
-                        predictions.append("srp_Latn")
-                    elif language == "ckm_Latn":
-                        predictions.append("hrv_Latn")
-                    else:
-                        predictions.append(language)
             else:
-                return [self.other]
+                return ['other']
+        else:
+            return ['other']
         if not predictions:
-            return [self.other]
+            return ["other"]
         return predictions
