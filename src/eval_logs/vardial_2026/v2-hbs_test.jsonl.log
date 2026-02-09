@@ -1,0 +1,47 @@
+INFO:root:Evaluation of fasttext_hf_hub started
+INFO:root:Loading dataset from hbs_test.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='fasttext_hf_hub', dataset='hbs_test.jsonl', model='laurievb/OpenLID-v2', second_model='../../OpenLID-v2/new_data/oci_no_pilar_frp/train/openlid-v3.bin', threshold=0.5, other_if_below_threshold=False, k=1, languages='bos_Latn,hrv_Latn,srp_Latn', run_name='vardial_2026/v2-hbs_test.jsonl', log_fn='eval_logs/vardial_2026/v2-hbs_test.jsonl')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for fasttext_hf_hub:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 24.39%
+INFO:root:	Loose macro F1: 34.21%
+INFO:root:	Loose macro MCC: 26.63%
+INFO:root:### Per-language metrics
+INFO:root:	bos_Latn:
+INFO:root:		F1: 31.67%
+INFO:root:		MCC: 19.58%
+INFO:root:{'f1': 0.28571428571428575, 'tn': 23, 'tp': 19, 'fn': 2, 'fp': 93, 'fpr': 0.8017241379310345, 'precision': 0.16964285714285715, 'recall': 0.9047619047619048}
+INFO:root:	hrv_Latn:
+INFO:root:		F1: 70.97%
+INFO:root:		MCC: 71.03%
+INFO:root:{'f1': 0.6285714285714286, 'tn': 113, 'tp': 11, 'fn': 11, 'fp': 2, 'fpr': 0.017391304347826087, 'precision': 0.8461538461538461, 'recall': 0.5}
+INFO:root:	srp_Latn:
+INFO:root:		F1: 0.00%
+INFO:root:		MCC: -10.72%
+INFO:root:{'f1': 0, 'tn': 43, 'tp': 0, 'fn': 94, 'fp': 0, 'fpr': 0.0, 'precision': 0, 'recall': 0.0}
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 16.26%
+INFO:root:	Overlap F1: 21.54%
+INFO:root:	Strict macro F1: 32.04%
+INFO:root:	Strict macro MCC: 20.92%
+INFO:root:### Per-language metrics
+INFO:root:	bos_Latn:
+INFO:root:		F1: 31.40%
+INFO:root:		MCC: 10.68%
+INFO:root:	hrv_Latn:
+INFO:root:		F1: 64.71%
+INFO:root:		MCC: 63.30%
+INFO:root:	srp_Latn:
+INFO:root:		F1: 0.00%
+INFO:root:		MCC: -11.23%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 2.08 seconds
+INFO:root:	ms / sentence: 16.89 ms

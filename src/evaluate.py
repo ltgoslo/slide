@@ -121,17 +121,28 @@ def count_loose(
     return loose_accuracy, loose_per_language_f1, loose_per_language_mcc
 
 
-def calculate_metrics(confusion_matrix, allowed_languages):
+def calculate_metrics(confusion_matrix, allowed_languages, predicted_languages_unique):
     per_langauge = {}
 
-    for i, gold in enumerate(confusion_matrix):
+    for lang in allowed_languages:
         tn = 0
-        for k, row in enumerate(confusion_matrix):
-            tn += sum([x for h, x in enumerate(row) if (h!= i) and (k!=i)])
+        gold_row_index = allowed_languages.index(lang)
+        if lang in predicted_languages_unique:
 
-        tp = confusion_matrix[i][i]
-        fn = sum(confusion_matrix[i][j] for j in range(len(confusion_matrix)) if j != i)
-        fp = sum(confusion_matrix[j][i] for j in range(len(confusion_matrix)) if j != i)
+            gold_column_index = predicted_languages_unique.index(lang)
+
+            for row_index, row in enumerate(confusion_matrix):
+                tn += sum([lang_value for column_index, lang_value in enumerate(row) if (row_index != gold_row_index) and (column_index != gold_column_index)])
+
+            tp = confusion_matrix[gold_row_index][gold_column_index]
+            fn = sum(confusion_matrix[gold_row_index][column_index] for column_index in range(len(confusion_matrix)) if column_index != gold_column_index)
+            fp = sum(confusion_matrix[row_index][gold_column_index] for row_index in range(len(confusion_matrix[gold_column_index])) if row_index != gold_row_index)
+        else:  # some language is never predicted, although should
+            for row_index, row in enumerate(confusion_matrix):
+                tn += sum([lang_value for lang_value in row if (row_index != gold_row_index)])
+                tp = 0
+                fn = sum(confusion_matrix[gold_row_index])
+                fp = 0
         real_negatives = fp + tn
         fpr = fp / real_negatives if real_negatives > 0 else 0
 
@@ -139,9 +150,8 @@ def calculate_metrics(confusion_matrix, allowed_languages):
         recall = tp / (tp + fn) if (tp + fn) > 0 else 0
 
         f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0
-
-        per_langauge[allowed_languages[i]] = {
-            "f1": f1, "tn":tn, "tp": tp, "fn": fn, "fp": fp, "fpr": fpr, "precision": precision, "recall": recall,
+        per_langauge[lang] = {
+            "f1": f1, "tn": tn, "tp": tp, "fn": fn, "fp": fp, "fpr": fpr, "precision": precision, "recall": recall,
         }
 
     return per_langauge
@@ -186,6 +196,7 @@ def evaluate(args, identifier: AbstractLanguageIdentifier):
         predicted_languages_unique = supported_languages
     else:
         predicted_languages_unique = list(predicted_languages_unique)
+        predicted_languages_unique.sort()
     end_time = time.time()
 
     logging.info("Calculating metrics...")
@@ -252,7 +263,7 @@ def evaluate(args, identifier: AbstractLanguageIdentifier):
                                                                 torch.zeros(1))
                         strict_per_language_mcc[language].update(
                             torch.zeros(1), torch.zeros(1))
-    per_language = calculate_metrics(confusion_matrix, supported_languages)
+    per_language = calculate_metrics(confusion_matrix, supported_languages, predicted_languages_unique)
     draw_confusion_matrix(confusion_matrix, supported_languages, predicted_languages_unique, args)
     logging.info(f"\n# Results for {args.method}:\n")
     logging.info("## Loose metrics")
