@@ -135,8 +135,8 @@ def calculate_metrics(confusion_matrix, allowed_languages, predicted_languages_u
                 tn += sum([lang_value for column_index, lang_value in enumerate(row) if (row_index != gold_row_index) and (column_index != gold_column_index)])
 
             tp = confusion_matrix[gold_row_index][gold_column_index]
-            fn = sum(confusion_matrix[gold_row_index][column_index] for column_index in range(len(confusion_matrix)) if column_index != gold_column_index)
-            fp = sum(confusion_matrix[row_index][gold_column_index] for row_index in range(len(confusion_matrix[gold_column_index])) if row_index != gold_row_index)
+            fn = sum(confusion_matrix[gold_row_index][column_index] for column_index in range(len(confusion_matrix[gold_row_index])) if column_index != gold_column_index)
+            fp = sum(confusion_matrix[row_index][gold_column_index] for row_index in range(len(confusion_matrix)) if row_index != gold_row_index)
         else:  # some language is never predicted, although should
             for row_index, row in enumerate(confusion_matrix):
                 tn += sum([lang_value for lang_value in row if (row_index != gold_row_index)])

@@ -1,0 +1,47 @@
+INFO:root:Evaluation of fasttext_hf_hub started
+INFO:root:Loading dataset from hbs_test.jsonl...
+INFO:root:Running inference...
+INFO:root:Namespace(method='fasttext_hf_hub', dataset='hbs_test.jsonl', model='cis-lmu/glotlid', second_model='../../OpenLID-v2/new_data/oci_no_pilar_frp/train/openlid-v3.bin', threshold=0.0, other_if_below_threshold=False, k=1, languages='bos_Latn,hrv_Latn,srp_Latn', run_name='vardial_2026/glotlid-hbs', log_fn='eval_logs/vardial_2026/glotlid-hbs')
+INFO:root:Calculating metrics...
+INFO:root:
+# Results for fasttext_hf_hub:
+
+INFO:root:## Loose metrics
+INFO:root:	Loose accuracy: 40.65%
+INFO:root:	Loose macro F1: 41.30%
+INFO:root:	Loose macro MCC: 36.59%
+INFO:root:### Per-language metrics
+INFO:root:	bos_Latn:
+INFO:root:		F1: 28.17%
+INFO:root:		MCC: 29.41%
+INFO:root:{'f1': 0.25, 'tn': 67, 'tp': 10, 'fn': 11, 'fp': 49, 'fpr': 0.4224137931034483, 'precision': 0.1694915254237288, 'recall': 0.47619047619047616}
+INFO:root:	hrv_Latn:
+INFO:root:		F1: 55.74%
+INFO:root:		MCC: 53.48%
+INFO:root:{'f1': 0.4927536231884059, 'tn': 85, 'tp': 17, 'fn': 5, 'fp': 30, 'fpr': 0.2608695652173913, 'precision': 0.3617021276595745, 'recall': 0.7727272727272727}
+INFO:root:	srp_Latn:
+INFO:root:		F1: 40.00%
+INFO:root:		MCC: 26.86%
+INFO:root:{'f1': 0.3770491803278688, 'tn': 38, 'tp': 23, 'fn': 71, 'fp': 5, 'fpr': 0.11627906976744186, 'precision': 0.8214285714285714, 'recall': 0.24468085106382978}
+INFO:root:
+
+## Strict metrics
+INFO:root:	Strict accuracy: 33.33%
+INFO:root:	Overlap F1: 38.08%
+INFO:root:	Strict macro F1: 39.76%
+INFO:root:	Strict macro MCC: 22.89%
+INFO:root:### Per-language metrics
+INFO:root:	bos_Latn:
+INFO:root:		F1: 26.32%
+INFO:root:		MCC: 2.65%
+INFO:root:	hrv_Latn:
+INFO:root:		F1: 53.97%
+INFO:root:		MCC: 43.50%
+INFO:root:	srp_Latn:
+INFO:root:		F1: 38.98%
+INFO:root:		MCC: 22.51%
+INFO:root:
+
+## CPU inference time
+INFO:root:	Total runtime: 2.45 seconds
+INFO:root:	ms / sentence: 19.89 ms
